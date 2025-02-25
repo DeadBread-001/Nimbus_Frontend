@@ -3,25 +3,20 @@ import { validators } from "../../utils/validate.js";
 import profileTemplate from "./Profile.hbs";
 import editFormTemplate from "./editForm.hbs";
 import Router from "../../utils/router.js";
-import store, { menu } from "../../index.js";
-import { getProfileData } from "../../../use-cases/profile.js";
-import { PROFILE_REDUCER } from "../../../flux/actions/profile.js";
+import { menu } from "../../index.js";
 import { addSliderHandler } from "../../utils/slider.js";
 import {NOTIFICATION_TYPES, showNotification} from "../Notification/notification.js";
-import { getFavouritesFilms } from "../../api/profile.js";
 
 /**
  * Отображает профиль пользователя на странице.
  * @param {string} profileId Идентификатор профиля пользователя.
  */
 export async function renderProfile(profileId) {
-  const filmsData = await getFavouritesFilms(profileId);
-  let profileData;
-  await getProfileData(profileId);
-  store.subscribe(PROFILE_REDUCER, () => {
-    profileData = store.getState().profile.profileData.user;
-  });
-  await getProfileData(profileId);
+  const [profileData, filmsData] = await Promise.all([
+    profileApi.getProfileData(profileId),
+    profileApi.getFavouritesFilms(profileId),
+  ]);
+  console.error(profileData);
 
   const profilePageData = { ...profileData, filmsData };
   document.querySelector("main").innerHTML = profileTemplate(profilePageData);

@@ -1,9 +1,7 @@
 import * as filmApi from "../../api/film.js";
 import template from "./Film.hbs";
 import Router from "../../utils/router.js";
-import store, { getCookie } from "../../index.js";
-import { getFilmData } from "../../../use-cases/film.js";
-import { FILM_REDUCER } from "../../../flux/actions/film.js";
+import { getCookie } from "../../index.js";
 import {NOTIFICATION_TYPES, showNotification} from "../Notification/notification.js";
 import {
   addToFavorite,
@@ -22,17 +20,11 @@ import * as profileApi from "../../api/profile.js";
  * @return {void}
  */
 export async function renderFilmPage(filmId) {
-  const [filmActors] = await Promise.all([filmApi.getActors(filmId)]);
+  const [filmData, filmActors] = await Promise.all([
+    filmApi.getFilmData(filmId),
+    filmApi.getActors(filmId),
+  ]);
 
-  store.clearSubscribes();
-  const actorSection = document.createElement("section");
-  actorSection.classList.add("actor-section");
-  let filmData;
-  await getFilmData(filmId);
-  store.subscribe(FILM_REDUCER, () => {
-    filmData = store.getState().film.data.film;
-  });
-  await getFilmData(filmId);
   let inFavorites;
   const profileId = getCookie("user_uuid");
   if (profileId !== undefined) {
