@@ -1,0 +1,98 @@
+input {
+  font-size: var(--main-text);
+  display: block;
+  padding: 0 16px;
+  border-width: 0;
+  line-height: clamp(30px, 4vw, 40px);
+  border-radius: 16px;
+  color: var(--white);
+  background: var(--grey-main);
+  font-family: var(--input-font), serif;
+
+  &:focus {
+    outline: var(--white) solid thin;
+  }
+
+  & + input {
+    margin-top: 32px;
+  }
+}
+
+.form-section {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--white);
+
+  &__submit-button {
+    cursor: pointer;
+    margin: clamp(28px, 8vw, 48px) auto 16px;
+    background: var(--neon-main);
+    width: -webkit-fill-available;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--neon-secondary);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        background-color: var(--neon-secondary);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__error-login {
+    color: var(--neon-main);
+    font-size: clamp(12px, 1.5vw, 15px);
+    padding: 6px 12px 6px;
+    flex-wrap: wrap;
+    align-content: center;
+    overflow: hidden;
+    height: var(--main-text);
+  }
+
+  &__title {
+    font-size: clamp(18px, 1.5vw, 24px);
+    color: var(--white);
+    margin-left: 12px;
+  }
+
+  &__logo {
+    margin: 16px auto;
+    width: auto;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  &__form-background {
+    margin: 96px auto;
+    padding: 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    min-width: clamp(100px, 30vw, 322px);
+    max-width: clamp(200px, 30vw, 346px);
+    color: var(--white);
+    background: var(--neutral-main-with-opacity);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.auth-background {
+  background: url("img/background/background.png") rgba(255, 255, 255, 0.3)
+    no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background-size: cover;
+}

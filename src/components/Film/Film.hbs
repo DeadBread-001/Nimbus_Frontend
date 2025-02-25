@@ -1,0 +1,95 @@
+<div class="film-page-poster-block">
+  <div class="film-page-poster-block__image-div">
+    <img class="film-page-poster-block__image" src="{{ preview }}" />
+    <div class="poster-block__overlay"></div>
+  </div>
+  <div class="film-page-poster-block__poster-data">
+    <div class="film-page-poster-block__text-data">
+      <h1>{{ title }}</h1>
+      <a> {{ data }} </a>
+    </div>
+    <div class="film-page-poster-block__poster-actions">
+      {{#if withSubscription}}
+      <div class="accent-button with-subscription">Оформить подписку</div>
+      {{else}}
+      <div class="accent-button">Смотреть</div>
+      {{/if}}
+      <div class="film-page-poster-block__buttons" id="favourites-button">
+        {{#if inFavorites}}
+        <img src="/icons/full-heart.svg" />
+        {{else}}
+        <img src="/icons/heart.svg" />
+        {{/if}}
+      </div>
+      {{#if isSerial}}
+
+      {{else}}
+      <a class="film-page-poster-block__duration"> {{ duration }} </a>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="film-content-block">
+  <div class="film-content-block__left">
+    <div class="film-content-block__description">
+      <a class="film-content-block__sub-title">Описание</a>
+      <p>{{ data }}</p>
+    </div>
+    <div class="film-content-block__actors">
+      <a class="film-content-block__sub-title">Актеры</a>
+      <div class="film-content-block__actors-list">
+        {{#each filmActors}}
+        <div
+          class="film-content-block__actor-preview"
+          data-actor-id="{{ this.uuid }}"
+        >
+          <img
+            class="film-content-block__actor-avatar"
+            src="{{ this.avatar }}"
+          />
+          <div class="film-content-block__dropdown-actor-name">
+            {{ this.name }}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="comments-block"></div>
+  </div>
+
+  <div class="film-content-block__data">
+    <div class="film-content-block__data-section">
+      <a class="film-content-block__sub-title">Дата выхода</a>
+      <div class="film-content-block__data-element">{{ date }}</div>
+    </div>
+    <div class="film-content-block__data-section">
+      <a class="film-content-block__sub-title">Возрастное ограничение</a>
+      <div class="film-content-block__data-element">{{ ageLimit }}+</div>
+    </div>
+    <div class="film-content-block__data-section">
+      <a class="film-content-block__sub-title">Рейтинг</a>
+      <div class="film-content-block__data-element">
+        {{ averageScore }}
+      </div>
+    </div>
+    <div class="film-content-block__data-section">
+      <a class="film-content-block__sub-title">Жанры</a>
+      <div class="film-content-block__genres-list">
+        {{#each genres}}
+        <div
+          class="film-content-block__data-element film-content-block__genre"
+          data-genre-uuid="{{ this.genreUuid }}"
+          data-genre-name-ru="{{ this.genreName }}"
+        >
+          {{ this.genreName }}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="film-content-block__data-section">
+      <a class="film-content-block__sub-title">Режиссеры</a>
+      <div class="film-content-block__data-element">{{ director }}</div>
+    </div>
+  </div>
+</div>

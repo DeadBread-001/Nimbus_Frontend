@@ -1,0 +1,12 @@
+.form-section {
+  &__error-signup {
+    color: var(--neon-main);
+    font-size: clamp(9px, 1.4vw, 15px);
+    overflow: hidden;
+    height: var(--main-text);
+    display: flex;
+    padding: 6px 12px 6px;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+}

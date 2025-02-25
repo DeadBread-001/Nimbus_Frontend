@@ -1,0 +1,256 @@
+.player-container {
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black);
+  }
+
+  &__fullscreen {
+  }
+
+  &.show-controls &__wrapper {
+    background-color: rgba(0, 0, 0, 0.385);
+    bottom: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.25s ease;
+  }
+
+  &__speed-options {
+    padding-left: 0;
+
+    li {
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px 0 5px 16px;
+    }
+  }
+
+  &__backward {
+    transform: rotate(180deg);
+  }
+
+  &__volume-range {
+    cursor: pointer;
+  }
+
+  &__volume-range:focus {
+    outline: none;
+  }
+
+  &__video-timer,
+  &__video-controls,
+  &__options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--first-layer);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+
+    &__wrapper::before {
+      content: "";
+      bottom: 0;
+      width: 100vw;
+      z-index: var(--minus-layer);
+      height: calc(100vh + 32px);
+      position: absolute;
+      background: linear-gradient(to top, var(--neutral-dark), transparent);
+    }
+  }
+
+  &__video-timeline {
+    height: 4px;
+    width: 100vw;
+    cursor: pointer;
+  }
+
+  &__video-timeline &__progress-area {
+    height: 4px;
+    position: relative;
+    background: var(--grey-secondary);
+  }
+
+  &__progress-area {
+    span {
+      position: absolute;
+      left: 50%;
+      color: var(--white);
+      top: -32px;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__progress-bar {
+    width: 0;
+    height: 100%;
+    position: relative;
+    background: var(--neon-main);
+
+    &::before {
+      content: "";
+      right: 0;
+      top: 50%;
+      height: 16px;
+      width: 16px;
+      background: inherit;
+      position: absolute;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__progress-area span,
+  &__progress-area &__progress-bar::before {
+    display: none;
+  }
+
+  &__video-timeline:hover &__progress-area span,
+  &__video-timeline:hover &__progress-area &__progress-bar::before {
+    display: block;
+  }
+
+  &__video-controls {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 8px clamp(8px, 1vw, 16px);
+  }
+
+  &__options {
+    width: 100vw;
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+  }
+
+  &__options {
+    button {
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      background: none;
+    }
+
+    button > img,
+    button > span > img {
+      width: clamp(14px, 4vw, 32px);
+    }
+
+    input {
+      margin-left: clamp(4px, 1vw, 8px);
+      padding: 0;
+      height: 4px;
+      max-width: clamp(40px, 12vw, 96px);
+      accent-color: var(--neon-main);
+    }
+  }
+
+  &__video-timer {
+    color: var(--white);
+    margin-left: clamp(4px, 1vw, 16px);
+  }
+
+  &__play-pause {
+    margin-left: clamp(4px, 1vw, 16px);
+    margin-right: clamp(4px, 1vw, 16px);
+  }
+
+  &__pic-in-pic {
+    margin-left: clamp(4px, 1vw, 16px);
+    margin-right: clamp(4px, 1vw, 16px);
+  }
+
+  &__options button:where(img, span) {
+    width: 100vw;
+    height: 100vh;
+    line-height: 48px;
+  }
+
+  &__video-timer &__separator {
+    margin: 0 2px;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  &__playback-content {
+    position: relative;
+  }
+
+  &__speed-options {
+    position: absolute;
+    bottom: 40px;
+    left: -40px;
+    width: 95px;
+    opacity: 0;
+    pointer-events: none;
+    list-style: none;
+    color: var(--white);
+    background: var(--neutral-light);
+    border-radius: 4px;
+    transition: opacity 0.13s ease;
+
+    &.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__current-time,
+  &__separator,
+  &__video-duration {
+    font-size: clamp(8px, 2vw, 15px);
+  }
+}
+
+.no-cursor {
+  cursor: none;
+}
+
+input[type="range"] {
+}
+
+#exit-player {
+  margin: 32px 16px auto auto;
+  z-index: var(--third-layer);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.exit-button {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--white);
+  border: 1px solid var(--grey-main);
+  border-radius: clamp(8px, 2vw, 16px);
+  padding: clamp(10px, 3vw, 16px);
+  opacity: 0;
+  display: block;
+  margin-left: 8px;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--hover-color);
+  font-size: clamp(11px, 3vw, 18px);
+}
+
+.show-exit {
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.25s ease;
+}

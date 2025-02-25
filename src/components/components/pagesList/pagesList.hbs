@@ -1,0 +1,11 @@
+<div class="pages-list">
+  <button class="pages-list__simple-button left first"><<</button>
+  <button class="pages-list__simple-button left"><</button>
+  {{#each pages}}
+  <button class="pages-list__simple-button">
+    {{ this }}
+  </button>
+  {{/each}}
+  <button class="pages-list__simple-button right">></button>
+  <button class="pages-list__simple-button right last">>></button>
+</div>

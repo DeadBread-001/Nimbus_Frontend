@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["google", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["*.precompiled.js", "/dist/*"],
+  "rules": {
+    "linebreak-style": "off",
+    "new-cap": "off",
+    "prefer-promise-reject-errors": "off",
+    "max-len": 0
+  }
+}

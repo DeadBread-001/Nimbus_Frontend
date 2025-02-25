@@ -1,0 +1,37 @@
+<div class="films-section">
+  <div class="films-section__title">{{ genreNameRu }}</div>
+  <div class="films-section__genre-films-container">
+    {{#each filmsData}}
+    <div
+      class="films-section__film-card"
+      data-film-id="{{ this.uuid }}"
+      data-film-title="{{ this.title }}"
+    >
+      <img class="films-section__film-image" src="{{ this.preview_data }}" />
+      <div class="films-section__film-content">
+        <div class="films-section__content-top">
+          <div class="films-section__film-title">
+            {{ this.title }}
+          </div>
+        </div>
+        <div class="films-section__content-bottom">
+          <div class="films-section__film-time">
+            <img class="films-section__time-icon" src="/icons/time.svg" />
+            {{ this.duration }}
+          </div>
+          <div class="films-section__film-rating">
+            {{#stars this.average_score}}
+            <div class="films-section__star-container">
+              <div class="films-section__star"></div>
+            </div>
+            {{/stars}}
+            <span class="films-section__rating-count">{{
+              this.scores_count
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,123 @@
+.subscriptions {
+  width: clamp(300px, 94vw, 1266px);
+
+  &__title {
+    margin-bottom: clamp(18px, 5vw, 32px);
+    margin-top: clamp(18px, 5vw, 32px);
+    font-size: clamp(14px, 3vw, var(--header-300));
+    color: var(--white);
+  }
+
+  &__card {
+    padding: clamp(12px, 3vw, 32px);
+    border-radius: 8px;
+    width: clamp(118px, 39vw, 553px);
+    color: var(--white);
+    background-color: var(--hover-color);
+  }
+
+  &__cards {
+    gap: clamp(16px, 5vw, 32px);
+    display: flex;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: clamp(10px, 3vw, 24px);
+  }
+
+  &__features {
+    height: clamp(40px, 12vw, 64px);
+    color: var(--grey-secondary);
+    width: fit-content;
+    text-wrap: pretty;
+    font-size: clamp(7px, 2vw, 17px);
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 32px);
+  }
+
+  &__plan {
+    width: clamp(54px, 16vw, 244px);
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    cursor: pointer;
+    width: clamp(46px, 14vw, 244px);
+    border-radius: clamp(5px, 1vw, 8px);
+    background-color: var(--neon-main);
+    padding: clamp(2px, 1vw, 4px) clamp(4px, 1vw, 16px);
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: clamp(7px, 2vw, 18px);
+  }
+
+  &__price {
+    margin: 0;
+    font-size: clamp(11px, 3vw, 32px);
+  }
+
+  &__month {
+    font-size: clamp(6px, 1vw, 16px);
+    color: var(--grey-secondary);
+  }
+
+  &__table {
+    width: clamp(300px, 94vw, 1266px);
+    margin-bottom: clamp(32px, 10vw, 64px);
+    border-collapse: separate;
+    border-spacing: 0;
+
+    td {
+      font-size: clamp(9px, 2vw, 16px);
+      height: 48px;
+      width: clamp(200px, 2vw, 400px);
+      word-wrap: break-word;
+      background-color: var(--hover-color);
+      color: var(--grey-secondary);
+      padding: 10px;
+    }
+
+    th {
+      font-size: clamp(9px, 2vw, 16px);
+      height: 32px;
+      color: var(--white);
+      background-color: var(--neutral-dark);
+      padding: clamp(8px, 2vw, 16px);
+      text-align: left;
+      width: 10px;
+    }
+
+    tr th,
+    tr td {
+      border-top: solid 1px var(--border-color);
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    tr:first-child th:first-child {
+      border-top-left-radius: 12px;
+    }
+
+    tr:first-child th:last-child {
+      border-top-right-radius: 12px;
+    }
+
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 12px;
+    }
+
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 12px;
+    }
+  }
+}

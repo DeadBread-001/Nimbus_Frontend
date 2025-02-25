@@ -1,0 +1,177 @@
+.menu-container {
+  width: clamp(500px, 100vw, 1266px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(8px, 1vw, 16px) clamp(9px, 1vw, 24px);
+
+  &__menu {
+    display: flex;
+    align-items: flex-start;
+    font-size: var(--main-text);
+    align-self: center;
+    padding: clamp(4px, 1vw, 8px);
+    background-color: var(--neutral-dark);
+    border-radius: clamp(4px, 1vw, 16px);
+  }
+
+  &__menu-item {
+    white-space: nowrap;
+    color: var(--grey-secondary);
+    display: block;
+    text-decoration: none;
+    font-size: clamp(9px, 1.4vw, 16px);
+    padding: clamp(4px, 1.4vw, 16px);
+
+    &.active {
+      color: var(--white);
+      border: 1px solid var(--neon-main);
+      border-radius: clamp(3px, 1vw, 8px);
+      background-color: var(--hover-color);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--neon-secondary);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        color: var(--neon-secondary);
+      }
+    }
+  }
+
+  &__logo {
+    & > img {
+      cursor: pointer;
+      margin-right: 32px;
+      width: clamp(15px, 30vw, 270px);
+
+      @media (max-width: 720px) {
+        width: clamp(15px, 5vw, 24px);
+        margin-right: clamp(2px, 1vw, 16px);
+        content: url("./img/logo/favicon.webp");
+      }
+    }
+  }
+
+  &__nav-icon {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    & > img {
+      margin-left: 8px;
+      width: clamp(12px, 2.5vw, 28px);
+      cursor: pointer;
+    }
+    & > a {
+      font-size: clamp(7px, 1vw, var(--main-text));
+      align-self: center;
+      color: var(--neon-main);
+    }
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__menu-right {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.auth-item {
+  white-space: nowrap;
+  color: var(--grey-secondary);
+  display: block;
+  text-decoration: none;
+  font-size: clamp(9px, 1.4vw, 16px);
+  padding: clamp(4px, 1.4vw, 16px);
+
+  &.active {
+    color: var(--white);
+    border: 1px solid var(--neon-main);
+    border-radius: clamp(3px, 1vw, 8px);
+    background-color: var(--hover-color);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--neon-secondary);
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      color: var(--neon-secondary);
+    }
+  }
+}
+
+.no-auth-elements {
+  display: flex;
+  align-items: flex-start;
+  font-size: var(--main-text);
+  align-self: center;
+  padding: clamp(4px, 1vw, 8px);
+  margin-left: clamp(8px, 1vw, 16px);
+  background-color: var(--neutral-dark);
+  border-radius: clamp(4px, 1vw, 16px);
+}
+
+.auth-elements {
+  display: flex;
+  align-items: center;
+  font-size: var(--main-text);
+  align-self: center;
+  padding: 8px;
+  margin-left: clamp(8px, 2vw, 16px);
+}
+
+.avatar {
+  object-fit: cover;
+  width: clamp(32px, 7vw, 48px);
+  height: clamp(32px, 7vw, 48px);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dropdown {
+  cursor: pointer;
+  position: relative;
+  padding-top: clamp(3px, 1vw, 8px);
+  padding-left: 8px;
+
+  &:hover {
+    .dropdown-content {
+      display: block;
+      opacity: 5;
+    }
+  }
+
+  & > img {
+    width: clamp(12px, 3vw, 17px);
+  }
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--neutral-dark);
+  min-width: clamp(60px, 1vw, 120px);
+  padding: clamp(5px, 1vw, 10px);
+  border-radius: 8px;
+  right: -10px;
+  top: clamp(22px, 1vw, 30px);
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: var(--second-layer);
+}
+
+.auth-menu {
+  margin-left: 10px;
+}

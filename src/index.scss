@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Monoton&display=swap");
+@import "components/Menu/Menu";
+@import "components/Films/films";
+@import "components/Login/auth";
+@import "components/Signup/signup";
+@import "components/Actor/actor";
+@import "components/Film/film";
+@import "components/Player/player";
+@import "components/Profile/Profile";
+@import "components/Notification/notification";
+@import "components/SearchPage/search";
+@import "components/Subscription/subscription";
+
+:root {
+  --black: #000000;
+  --neon-main: #ff06b5;
+  --neon-secondary: #ff80d7;
+  --neutral-dark: #0f0f0f;
+  --black-transperent: #0000007f;
+  --neutral-main: #141414;
+  --shadow-color: #0000004c;
+  --hover-color: #1a1a1a;
+  --neutral-light: #212121;
+  --border-color: #262626;
+  --grey-main: #ffffff33;
+  --grey-secondary: #999999;
+  --white: #ffffff;
+  --neutral-main-with-opacity: #0e0e0eb2;
+  --input-font: "Roboto", sans-serif;
+  --main-font: Manrope, solid;
+  --caption: 12px;
+  --main-text: 15px;
+  --header-300: 30px;
+  --minus-layer: -1;
+  --first-layer: 1;
+  --second-layer: 2;
+  --third-layer: 3;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  font-family: var(--main-font), serif;
+  background-color: var(--neutral-main);
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 100%;
+}
+
+.offline-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-transperent);
+  z-index: var(--third-layer);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#offline-modal {
+  background: var(--neutral-light);
+  color: var(--white);
+  padding: 20px;
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+
+  & > a {
+    padding: 8px;
+    width: fit-content;
+    border-radius: 8px;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--neon-main);
+    cursor: pointer;
+  }
+}

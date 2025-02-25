@@ -1,0 +1,30 @@
+<div
+  class="search-item-block"
+  data-element-id="{{ this.uuid }}"
+  data-element-title="{{ this.title }}"
+>
+  <img class="search-item-image" src="{{ this.preview }}" />
+  <div class="search-text-data">
+    <div class="search-text-data__title">
+      <h2>{{ this.title }}</h2>
+    </div>
+    <div class="search-text-data__information">
+      <div class="search-text-data__tags">
+        <img src="/icons/star-full.svg" />
+        {{ this.averageScore }}
+      </div>
+      <div class="search-text-data__tags">
+        {{ this.duration }}
+      </div>
+      <div class="search-text-data__tags">{{ this.ageLimit }}+</div>
+      <div class="search-text-data__tags">
+        {{ this.date }}
+      </div>
+      {{#each this.genres}}
+      <div class="search-text-data__tags">
+        {{ this.genreName }}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

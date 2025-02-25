@@ -1,0 +1,84 @@
+<div class="profile-info">
+  <div class="profile-info__photo">
+    <img src="{{ avatar }}" alt="{{ username }}" />
+  </div>
+  <div class="profile-info__details">
+    <div class="profile-info__top">
+      <h1 class="profile-info__nickname">{{ username }}</h1>
+      <a class="profile-info__buttons" id="edit-button" href="/edit">
+        Редактировать
+      </a>
+    </div>
+    <div class="profile-info__description">
+      <h1 class="profile-info__nickname">О пользователе</h1>
+      <ul>
+        <li class="profile-info__information">Почта: {{ login }}</li>
+        <li class="profile-info__information">
+          Дата регистрации: {{ registeredAt }}
+        </li>
+        <li class="profile-info__information">
+          Подписка: {{#if hasSubscription }} Активна {{else}} Не активна {{/if}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="films-section">
+  <div class="films-section__upper-block">
+    <div class="films-section__title">Моя коллекция</div>
+  </div>
+  {{#if filmsData}}
+  <div class="films-section__films-container">
+    <button class="films-section__carousel-button prev" id="left">
+      <img src="/icons/arrow.svg" alt="" />
+    </button>
+    <ul class="films-section__carousel">
+      {{#each filmsData}}
+      <li class="films-section__carousel-card">
+        <div
+          class="films-section__film-card"
+          data-film-id="{{ this.uuid }}"
+          data-film-title="{{ this.title }}"
+        >
+          <img
+            class="films-section__film-image"
+            src="{{ this.preview_data }}"
+          />
+          <div class="films-section__film-content">
+            <div class="films-section__content-top">
+              <div class="films-section__film-title">
+                {{ this.title }}
+              </div>
+            </div>
+            <div class="films-section__content-bottom">
+              <div class="films-section__film-time">
+                <img class="films-section__time-icon" src="/icons/time.svg" />
+                {{ this.duration }}
+              </div>
+              <div class="films-section__film-rating">
+                {{#stars this.average_score}}
+                <div class="films-section__star-container">
+                  <div class="films-section__star"></div>
+                </div>
+                {{/stars}}
+                <span class="films-section__rating-count">{{
+                  this.scores_count
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+    <button class="films-section__carousel-button next" id="right">
+      <img src="/icons/arrow.svg" alt="" />
+    </button>
+  </div>
+  {{else}}
+  <div class="films-section__no-collection">
+    Чтобы здесь появились фильмы, добавьте их в избранное
+  </div>
+  {{/if}}
+</div>

@@ -1,0 +1,78 @@
+<div class="player-container show-controls">
+  <div class="player-container__wrapper">
+    <div class="player-container__video-timeline">
+      <div class="player-container__progress-area">
+        <span>00:00</span>
+        <div class="player-container__progress-bar"></div>
+      </div>
+    </div>
+    <ul class="player-container__video-controls">
+      <li class="player-container__options left">
+        <button class="player-container__volume">
+          <img src="/icons/sound-max.svg" alt="Громкость" />
+        </button>
+        <input
+          class="player-container__volume-range"
+          type="range"
+          min="0"
+          max="1"
+          step="any"
+        />
+        <div class="player-container__video-timer">
+          <p class="player-container__current-time">00:00:00</p>
+          <p class="player-container__separator">/</p>
+          <p class="player-container__video-duration">00:00:00</p>
+        </div>
+      </li>
+      <li class="player-container__options center">
+        <button class="player-container__skip-backward">
+          <img
+            src="/icons/next.svg"
+            class="player-container__backward"
+            alt="Вперед"
+          />
+        </button>
+        <button class="player-container__play-pause">
+          <img src="/icons/play.svg" alt="Пауза" />
+        </button>
+        <button class="player-container__skip-forward">
+          <img src="/icons/next.svg" alt="Назад" />
+        </button>
+      </li>
+      <li class="player-container__options right">
+        <div class="player-container__playback-content">
+          <button class="player-container__playback-speed">
+            <span class="player-container__material-symbols-rounded">
+              <img
+                src="/icons/speed.svg"
+                class="speed-img"
+                alt="Скорость воспроизведения"
+              />
+            </span>
+          </button>
+          <ul class="player-container__speed-options">
+            <li data-speed="2">2x</li>
+            <li data-speed="1.5">1.5x</li>
+            <li data-speed="1" class="active">Обычная</li>
+            <li data-speed="0.75">0.75x</li>
+            <li data-speed="0.5">0.5x</li>
+          </ul>
+        </div>
+        <button class="player-container__pic-in-pic">
+          <span class="player-container__material-icons">
+            <img src="/icons/pict-in-alt.svg" alt="Окно в окне" />
+          </span>
+        </button>
+        <button class="player-container__fullscreen">
+          <img src="/icons/fullscreen.svg" alt="Полный экран" />
+        </button>
+      </li>
+    </ul>
+  </div>
+  <video>
+    <source src="{{ this.src }}" />
+  </video>
+</div>
+<button type="button" id="exit-player" class="exit-button show-exit">
+  Назад
+</button>
