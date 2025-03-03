@@ -38,7 +38,11 @@ export class Router {
     state.title = "Nimbus";
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     changeActiveButton(state.path);
     renderFilms();
   }
@@ -52,7 +56,11 @@ export class Router {
     state.title = "Регистрация";
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     changeActiveButton(state.path);
     renderSignup();
   }
@@ -66,7 +74,12 @@ export class Router {
     state.title = "Вход";
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
+
     changeActiveButton(state.path);
     renderLogin();
   }
@@ -80,7 +93,11 @@ export class Router {
     state.title = "Nimbus";
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
 
     renderLogout();
   }
@@ -96,7 +113,11 @@ export class Router {
     state.title = title;
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
 
     renderActorPage(uuid);
   }
@@ -112,7 +133,11 @@ export class Router {
     state.title = title;
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
 
     renderFilmPage(uuid);
     window.scrollTo(0, 0);
@@ -129,7 +154,11 @@ export class Router {
     state.title = genreNameRu;
     document.title = state.title;
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     renderGenrePage(genreUuid, genreNameRu);
     window.scrollTo(0, 0);
   }
@@ -144,7 +173,11 @@ export class Router {
     document.title = state.title;
     const uuid = getCookie("user_uuid");
 
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     changeActiveButton(state.path);
     renderProfile(uuid);
   }
@@ -162,8 +195,11 @@ export class Router {
     state.path = `/player/${uuid}`;
     state.title = title;
     document.title = state.title;
-
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     if (series) {
       renderPlayer(uuid, title, link, series, index);
     } else {
@@ -179,7 +215,11 @@ export class Router {
     state.path = "/search";
     state.title = "Поиск";
     document.title = state.title;
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     renderSearchPage();
   }
 
@@ -191,7 +231,11 @@ export class Router {
     state.path = "/subscription";
     state.title = "Подписки";
     document.title = state.title;
-    window.history.pushState(state, state.title, state.path);
+    if (
+      state.path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
+      window.history.pushState(state, state.title, state.path);
+    }
     renderSubscriptionPage();
   }
 
@@ -208,7 +252,10 @@ export class Router {
     const state = {};
     state.path = path;
     state.title = title;
-    if (needPush) {
+    if (
+      needPush &&
+      path !== window.location.href.replace("http://127.0.0.1:8080", "")
+    ) {
       window.history.pushState(state, state.title, path);
     }
     document.title = title;

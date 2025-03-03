@@ -9,7 +9,7 @@ import * as searchApi from "../../../api/search.js";
 const initialState = {
   page: 1,
   findBy: "films",
-  string: "Форсаж",
+  string: "",
 };
 
 /**

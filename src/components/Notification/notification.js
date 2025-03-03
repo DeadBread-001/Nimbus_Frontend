@@ -2,16 +2,19 @@ const icon = {
   success: '<img src="/icons/checkbox-circle.svg">',
   danger: '<img src="/icons/danger-zone.svg">',
 };
-export const NOTIFICATION_TYPES = {DANGER: "danger", SUCCESS: "success"};
+export const NOTIFICATION_TYPES = { DANGER: "danger", SUCCESS: "success" };
 const initialState = {
   message: "Sample Message",
-  toastType: null
-}
+  toastType: null,
+};
 
-export const showNotification = ({message: message, toastType: toastType}) => {
+export const showNotification = ({
+  message: message,
+  toastType: toastType,
+}) => {
   if (!message) {
-    message = initialState.message
-    toastType = initialState.toastType
+    message = initialState.message;
+    toastType = initialState.toastType;
   }
 
   if (!Object.keys(icon).includes(toastType)) {

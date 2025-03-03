@@ -55,7 +55,7 @@ const config = {
   noAuthElements: {
     login: {
       href: "/login",
-      text: "Авторизоваться",
+      text: "Авторизация",
       render: renderLogin,
     },
     signup: {
@@ -215,3 +215,7 @@ if (!navigator.onLine) {
 if (navigator.onLine) {
   hideOfflineModal();
 }
+
+document.querySelector(".avatar").addEventListener("click", () => {
+  Rout.goToProfilePage();
+});

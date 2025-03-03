@@ -13,13 +13,13 @@ import { addSliderHandler } from "../../utils/slider.js";
  */
 export async function renderFilms() {
   try {
-    const [filmData, topFourFilms, filmsGenres, subscriptionFilms] = await Promise.all([
-      filmsApi.getAll(),
-      filmsApi.getTopFour(),
-      filmsApi.getGenres(),
-      filmsApi.getFilmsWithSubscription(),
-    ]);
-
+    const [filmData, topFourFilms, filmsGenres, subscriptionFilms] =
+      await Promise.all([
+        filmsApi.getAll(),
+        filmsApi.getTopFour(),
+        filmsApi.getGenres(),
+        filmsApi.getFilmsWithSubscription(),
+      ]);
 
     topFourFilms[0].active = "data-active";
 

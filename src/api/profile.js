@@ -43,7 +43,7 @@ export async function isSubscribed(uuid) {
     );
     const responseData = await response.json();
 
-    return responseData.status === 200;
+    return responseData.hasSubscription;
   } catch (error) {
     console.error("Произошла ошибка в check:", error.message);
   }
