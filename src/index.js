@@ -4,29 +4,21 @@ import { renderLogin } from "./components/Login/login.js";
 import { renderSignup } from "./components/Signup/signup.js";
 import { renderProfile } from "./components/Profile/profile.js";
 import { renderLogout } from "./components/Logout/logout.js";
-import { rootReducer } from "../flux/reducers/rootReducer.js";
-import { createStore } from "../flux/redux-lite.js";
 import { Router } from "./utils/router.js";
 import Rout from "./utils/router.js";
 import "../src/index.scss";
-import { getFilmData } from "../use-cases/film";
-import { FILM_REDUCER } from "../flux/actions/film";
 import { renderSubscriptionPage } from "./components/Subscription/subscription.js";
 
-const store = createStore(rootReducer);
-
-export default store;
-
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("./sw.js", { scope: "/" })
-    .then((reg) => {
-      // console.log("SW register", reg);
-    })
-    .catch((e) => {
-      // console.log("SW Error", e);
-    });
-}
+// if ("serviceWorker" in navigator) {
+//   navigator.serviceWorker
+//     .register("./sw.js", { scope: "/" })
+//     .then((reg) => {
+//       // console.log("SW register", reg);
+//     })
+//     .catch((e) => {
+//       // console.log("SW Error", e);
+//     });
+// }
 
 const rootElement = document.getElementById("root");
 export const menuElement = document.createElement("nav");
@@ -63,7 +55,7 @@ const config = {
   noAuthElements: {
     login: {
       href: "/login",
-      text: "Авторизоваться",
+      text: "Авторизация",
       render: renderLogin,
     },
     signup: {
@@ -170,7 +162,7 @@ const handleLocation = async () => {
 
   if (window.location.href.includes("/player/")) {
     const uuid = path.substring("/player/".length, path.length);
-    getFilmData(uuid);
+    await getFilmData(uuid);
     store.subscribe(FILM_REDUCER, () => {
       const filmData = store.getState().film.data.film;
       Rout.goToPlayerPage(uuid, filmData.title, filmData.link);
@@ -223,3 +215,7 @@ if (!navigator.onLine) {
 if (navigator.onLine) {
   hideOfflineModal();
 }
+
+document.querySelector(".avatar").addEventListener("click", () => {
+  Rout.goToProfilePage();
+});

@@ -1,4 +1,5 @@
 import { fetchRequest, IP } from "./fetch.js";
+import { timeConvert } from "../utils/timeConvert";
 
 /**
  * Запрос на получение данных об актере
@@ -14,6 +15,8 @@ export async function getActorData(actorId) {
     if (!data || typeof data !== "object") {
       throw new Error("Ошибка: полученные данные не являются объектом");
     }
+
+    data.actor.birthday = timeConvert.dateIntoDayMonthYear(data.actor.birthday);
 
     return data.actor;
   } catch (error) {

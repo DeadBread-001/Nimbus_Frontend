@@ -2,9 +2,6 @@ import * as filmsApi from "../../api/films.js";
 import template from "./Films.hbs";
 import { renderSlider } from "../Slider/renderSlider.js";
 import Router from "../../utils/router.js";
-import store from "../../index.js";
-import { FILMS_REDUCER } from "../../../flux/actions/filmsAll.js";
-import { FilmsAllRequest } from "../../../use-cases/filmsAll.js";
 import { addSliderHandler } from "../../utils/slider.js";
 
 /**
@@ -16,20 +13,15 @@ import { addSliderHandler } from "../../utils/slider.js";
  */
 export async function renderFilms() {
   try {
-    const [topFourFilms, filmsGenres, subscriptionFilms] = await Promise.all([
-      filmsApi.getTopFour(),
-      filmsApi.getGenres(),
-      filmsApi.getFilmsWithSubscription(),
-    ]);
-    store.clearSubscribes();
+    const [filmData, topFourFilms, filmsGenres, subscriptionFilms] =
+      await Promise.all([
+        filmsApi.getAll(),
+        filmsApi.getTopFour(),
+        filmsApi.getGenres(),
+        filmsApi.getFilmsWithSubscription(),
+      ]);
 
     topFourFilms[0].active = "data-active";
-    let filmData;
-    await FilmsAllRequest();
-    store.subscribe(FILMS_REDUCER, () => {
-      filmData = store.getState().films.films;
-    });
-    await FilmsAllRequest();
 
     document.querySelector("main").innerHTML = template({
       filmData,

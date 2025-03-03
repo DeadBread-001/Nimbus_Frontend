@@ -1,7 +1,10 @@
 import template from "./subscription.hbs";
 import { buySubscription } from "../../api/subscription.js";
 import * as authApi from "../../api/auth.js";
-import {NOTIFICATION_TYPES, showNotification} from "../Notification/notification.js";
+import {
+  NOTIFICATION_TYPES,
+  showNotification,
+} from "../Notification/notification.js";
 import { getCookie } from "../../index.js";
 import * as subscriptionsApi from "../../api/subscription.js";
 
@@ -25,7 +28,10 @@ export async function renderSubscriptionPage() {
   monthlyButton.addEventListener("click", async () => {
     const isAuthorized = await authApi.check();
     if (!isAuthorized) {
-      showNotification({message: "Для этого нужно быть авторизованным",toastType: NOTIFICATION_TYPES.DANGER});
+      showNotification({
+        message: "Для этого нужно быть авторизованным",
+        toastType: NOTIFICATION_TYPES.DANGER,
+      });
     } else {
       const monthlyBody = {
         subId: monthlySubscription.uuid,
@@ -39,7 +45,10 @@ export async function renderSubscriptionPage() {
   yearlyButton.addEventListener("click", async () => {
     const isAuthorized = await authApi.check();
     if (!isAuthorized) {
-      showNotification({message: "Для этого нужно быть авторизованным",toastType: NOTIFICATION_TYPES.DANGER});
+      showNotification({
+        message: "Для этого нужно быть авторизованным",
+        toastType: NOTIFICATION_TYPES.DANGER,
+      });
     } else {
       const yearlyBody = {
         subId: yearlySubscription.uuid,

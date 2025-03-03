@@ -18,11 +18,11 @@ export async function getProfileData(uuid) {
   try {
     const response = await fetchRequest(`${IP}/profile/${uuid}/data`, "GET");
     const data = await response.json();
-
     if (!data || typeof data !== "object") {
       throw new Error("Ошибка: полученные данные не являются объектом");
     }
 
+    data.user.avatar = `data:image/png;base64,${data.user.avatar}`;
     return fixUserData(data.user);
   } catch (error) {
     console.error("Произошла ошибка: ", error.message);
@@ -43,7 +43,7 @@ export async function isSubscribed(uuid) {
     );
     const responseData = await response.json();
 
-    return responseData.status === 200;
+    return responseData.hasSubscription;
   } catch (error) {
     console.error("Произошла ошибка в check:", error.message);
   }
